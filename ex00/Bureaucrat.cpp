@@ -1,0 +1,79 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bbeceiro <bbeceiro@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/03 11:20:12 by bbeceiro          #+#    #+#             */
+/*   Updated: 2026/11/03 11:46:35 by bbeceiro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Bureaucrat.hpp"
+
+// Orthodox Canonical Form For Bureaucrat
+Bureaucrat::Bureaucrat() : _name("Default"), _grade(150) {}
+
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
+{
+    if (grade < 1)
+        throw GradeTooHighException();
+    if (grade > 150)
+        throw GradeTooLowException();
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat &other) : _name(other._name), _grade(other._grade) {}
+
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
+{
+    if (this != &other)
+        _grade = other._grade;
+    return *this;
+}
+
+Bureaucrat::~Bureaucrat() {}
+
+// incrementGrade and decrementGrade member functions
+void Bureaucrat::incrementGrade()
+{
+    if (_grade <= 1)
+        throw GradeTooHighException();
+    _grade--;
+}
+
+void Bureaucrat::decrementGrade()
+{
+    if (_grade >= 150)
+        throw GradeTooLowException();
+    _grade++;
+}
+
+// Getters
+std::string Bureaucrat::getName() const
+{
+    return _name;
+}
+
+int Bureaucrat::getGrade() const
+{
+    return _grade;
+}
+
+// Exception classes
+const char *Bureaucrat::GradeTooHighException::what() const throw()
+{
+    return "Grade is too high!";
+}
+
+const char *Bureaucrat::GradeTooLowException::what() const throw()
+{
+    return "Grade is too low!";
+}
+
+// Overload insertion operator for Bureaucrat
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat)
+{
+    out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";
+    return out;
+}
