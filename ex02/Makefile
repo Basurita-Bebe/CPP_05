@@ -6,7 +6,8 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I. -Iforms
 SRCS = main.cpp \
 	   Bureaucrat.cpp \
 	   AForm.cpp \
-	   forms/PresidentialPardonForm.cpp
+	   forms/PresidentialPardonForm.cpp \
+	   forms/RobotomyRequestForm.cpp \
 
 all: $(NAME)
 
