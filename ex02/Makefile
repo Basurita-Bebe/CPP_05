@@ -8,6 +8,7 @@ SRCS = main.cpp \
 	   AForm.cpp \
 	   forms/PresidentialPardonForm.cpp \
 	   forms/RobotomyRequestForm.cpp \
+	   forms/ShrubberyCreationForm.cpp
 
 all: $(NAME)
 
