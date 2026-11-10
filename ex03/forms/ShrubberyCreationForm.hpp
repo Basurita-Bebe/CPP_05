@@ -12,7 +12,7 @@ class   ShrubberyCreationForm : public AForm
         void executeAction() const;                         // the override
 
     public:
-        // OCF
+        /* OCF */
         ShrubberyCreationForm();
         ShrubberyCreationForm(std::string target);
         ShrubberyCreationForm(const ShrubberyCreationForm &other);
@@ -22,8 +22,8 @@ class   ShrubberyCreationForm : public AForm
         // Getters
         std::string getTarget() const;
 
-        // EXCEPTIONS
-        class   FileopenException : public std::exception
+        /* EXCEPTION CLASS */
+        class   FileOpenException : public std::exception
         {
             public:
                 const char *what() const throw();

@@ -6,7 +6,7 @@
 /*   By: bruno <bruno@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 11:20:08 by bbeceiro          #+#    #+#             */
-/*   Updated: 2026/11/05 09:14:29 by bruno            ###   ########.fr       */
+/*   Updated: 2026/11/10 11:16:27 by bruno            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,24 @@ class   Bureaucrat
         const std::string   _name;
         int                 _grade;
     public:
-        // OCF
+        /* OCF */
         Bureaucrat();
         Bureaucrat(std::string name, int grade);
         Bureaucrat(const Bureaucrat &other);
         Bureaucrat &operator=(const Bureaucrat &other);
         ~Bureaucrat();
         
-        // GETTERS
+        /* GETTERS */
         std::string getName() const;
         int getGrade() const;
         
-        // MEMBER FUNCTIONS
+        /* MEMBER FUNCTIONS */
         void incrementGrade();
         void decrementGrade();
         void signForm(AForm &form);
         void executeForm(const AForm &form) const;
 
-        // EXCEPTION CLASSES
+        /* EXCEPTIONS CLASSES */
         class GradeTooHighException : public std::exception
         {
             public:
@@ -56,7 +56,7 @@ class   Bureaucrat
         };
 };
 
-// OVERLOAD << OPERATOR
+/* OVERLOAD << OPERATOR */
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat);
 
 #endif

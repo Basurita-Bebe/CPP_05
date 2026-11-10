@@ -1,7 +1,6 @@
 #include "PresidentialPardonForm.hpp"
-#include <cstdlib>                              // for rand()
 
-// OCF
+/* OCF */
 PresidentialPardonForm::PresidentialPardonForm() : AForm("Presidential Pardon Form", 25, 5), _target("Default") {}
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("Presidential Pardon Form", 25, 5), _target(target) {}
@@ -19,13 +18,13 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 
 PresidentialPardonForm::~PresidentialPardonForm() {}
 
-// MEMBER FUNCTIONS
+/* MEMBER FUNCTION */
 void PresidentialPardonForm::executeAction() const
 {
     std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
 
-// GETTERS
+/* GETTERS */
 std::string PresidentialPardonForm::getTarget() const
 {
     return _target;

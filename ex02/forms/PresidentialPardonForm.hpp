@@ -3,23 +3,27 @@
 
 #include "AForm.hpp"
 
+/*
+** PresidentialPardonForm — Concrete form: sign 25, exec 5.
+*/
 class   PresidentialPardonForm : public AForm
 {
     private:
         const std::string _target;
 
     protected:
-        void executeAction() const;                         // the override
+        // The override. Prints: "<target> has been pardoned by Zaphod Beeblebrox."
+        void executeAction() const;
 
     public:
-        // OCF
+        /* OCF */
         PresidentialPardonForm();
         PresidentialPardonForm(std::string target);
         PresidentialPardonForm(const PresidentialPardonForm &other);
         PresidentialPardonForm &operator=(const PresidentialPardonForm &other);
         ~PresidentialPardonForm();
 
-        // Getters
+        /* GETTERS */
         std::string getTarget() const;
 };
 

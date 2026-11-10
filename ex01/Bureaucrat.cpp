@@ -1,7 +1,7 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-// Orthodox canonical form implementation
+/* OCF */
 Bureaucrat::Bureaucrat() : _name("Default"), _grade(150) {}
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
@@ -23,7 +23,18 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 
 Bureaucrat::~Bureaucrat() {}
 
-// incrementGrade and decrementGrade member functions
+/* GETTERS */
+std::string Bureaucrat::getName() const
+{
+    return _name;
+}
+
+int Bureaucrat::getGrade() const
+{
+    return _grade;
+}
+
+/* MEMEBER FUNCTIONS */ 
 void Bureaucrat::incrementGrade()
 {
     if (_grade <= 1)
@@ -38,36 +49,6 @@ void Bureaucrat::decrementGrade()
     _grade++;
 }
 
-// Getters
-std::string Bureaucrat::getName() const
-{
-    return _name;
-}
-
-int Bureaucrat::getGrade() const
-{
-    return _grade;
-}
-
-// Exception classes
-const char *Bureaucrat::GradeTooHighException::what() const throw()
-{
-    return "Grade is too high!";
-}
-
-const char *Bureaucrat::GradeTooLowException::what() const throw()
-{
-    return "Grade is too low!";
-}
-
-// Overload << operator
-std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat)
-{
-    out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";
-    return out;
-}
-
-// Member function to sign a form
 void Bureaucrat::signForm(Form &form)
 {
     try
@@ -81,4 +62,22 @@ void Bureaucrat::signForm(Form &form)
                   << form.getName() << " because " << e.what()
                   << "." <<std::endl;
     }
+}
+
+/* EXCEPTION CLASSES */
+const char *Bureaucrat::GradeTooHighException::what() const throw()
+{
+    return "Grade is too high!";
+}
+
+const char *Bureaucrat::GradeTooLowException::what() const throw()
+{
+    return "Grade is too low!";
+}
+
+/* OVERLOAD << OPERATOR */
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat)
+{
+    out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";
+    return out;
 }

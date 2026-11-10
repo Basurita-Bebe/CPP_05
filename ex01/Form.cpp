@@ -1,7 +1,7 @@
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 
-// Orthodox canonical form implementation
+/* OCF */
 Form::Form() : _name("Default"), _isSigned(false), _signGrade(1), _execGrade(1) {}
 
 Form::Form(std::string name, int signGrade, int execGrade) : _name(name), _isSigned(false), _signGrade(signGrade), _execGrade(execGrade)
@@ -25,7 +25,7 @@ Form &Form::operator=(const Form &other)
 
 Form::~Form() {}
 
-// Getters implementation
+/* GETTERS */
 std::string Form::getName() const
 {
     return _name;
@@ -46,7 +46,7 @@ int Form::getExecGrade() const
     return _execGrade;
 }
 
-// Member functions implementation
+/* MEMBER FUNCTIONS */
 void Form::beSigned(const Bureaucrat &bureaucrat)
 {
     if (bureaucrat.getGrade() > _signGrade)
@@ -54,7 +54,7 @@ void Form::beSigned(const Bureaucrat &bureaucrat)
     _isSigned = true;
 }
 
-// Exception classes implementation
+/* EXCEPTIONS CLASSES - WHAT */
 const char *Form::GradeTooHighException::what() const throw()
 {
     return "Form grade is too high!";
@@ -65,7 +65,7 @@ const char *Form::GradeTooLowException::what() const throw()
     return "Form grade is too low!";
 }
 
-// Overload << operator
+/* OVERLOAD << OPERATOR */
 std::ostream &operator<<(std::ostream &out, const Form &form)
 {
     out << "Form: " << form.getName()

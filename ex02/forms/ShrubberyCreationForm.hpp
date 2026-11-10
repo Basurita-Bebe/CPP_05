@@ -3,27 +3,37 @@
 
 #include "AForm.hpp"
 
+
+/*
+** ShrubberyCreationForm — Concrete form: sign 145, exec 137.
+*/
 class   ShrubberyCreationForm : public AForm
 {
     private:
         const std::string _target;
 
     protected:
-        void executeAction() const;                         // the override
+        // Creates "<target>_shrubbery" and writes ASCII trees in it.
+        // Throws FileOpenException if the file can't be created.
+        void executeAction() const;   
 
     public:
-        // OCF
+        /* OCF */
         ShrubberyCreationForm();
+        // Passes name + grade to AForm; only target is chose by the caller.
         ShrubberyCreationForm(std::string target);
         ShrubberyCreationForm(const ShrubberyCreationForm &other);
+        // Calls AForm::operator= (copies _isSigned), _target is const.
         ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);
         ~ShrubberyCreationForm();
 
-        // Getters
+        /* GETTERS */
         std::string getTarget() const;
 
-        // EXCEPTIONS
-        class   FileopenException : public std::exception
+        /* EXCEPTION CLASS*/
+        // Thrown by executeAction() when the output file can't be opened
+        // (e.g. missing directory, no write permission). Caught in executeForm().
+        class   FileOpenException : public std::exception
         {
             public:
                 const char *what() const throw();

@@ -3,13 +3,13 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
-// OCF: nothing to copy, no attributes
+/* OCF : nothing to copy */
 Intern::Intern() {}
 Intern::Intern(const Intern &other) { (void)other; }
 Intern &Intern::operator=(const Intern &other) { (void)other; return *this; }
 Intern::~Intern() {}
 
-// CREATORS
+/* CREATORS */
 AForm *Intern::createShrubbery(std::string const &target)
 {
     return new ShrubberyCreationForm(target);

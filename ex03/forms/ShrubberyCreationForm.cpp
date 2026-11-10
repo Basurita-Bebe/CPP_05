@@ -1,7 +1,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include <fstream>                              // for std::ofstream
 
-// OCF
+/* OCF */
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Shrubbery Creation Form", 145, 137), _target("Default") {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubbery Creation Form", 145, 137), _target(target) {}
@@ -19,13 +19,13 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
-// MEMBER FUNCTIONS
+/* MEMBER FUNCTION */
 void ShrubberyCreationForm::executeAction() const
 {
     std::string     filename = _target + "_shrubbery";
     std::ofstream   ofile(filename.c_str());
     if (!ofile)
-        throw FileopenException();
+        throw FileOpenException();
     ofile << "       _-_" << std::endl;
     ofile << "    /~~   ~~\\" << std::endl;
     ofile << " /~~         ~~\\" << std::endl;
@@ -37,14 +37,14 @@ void ShrubberyCreationForm::executeAction() const
     ofile << "      // \\\\" << std::endl;
 }
 
-// GETTERS
+/* GETTERS */
 std::string ShrubberyCreationForm::getTarget() const
 {
     return _target;
 }
 
-// EXCEPTIONS
-const char *ShrubberyCreationForm::FileopenException::what() const throw()
+/* EXCEPTION CLASS */
+const char *ShrubberyCreationForm::FileOpenException::what() const throw()
 {
     return "could not open the shrubbery file";
 }

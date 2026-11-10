@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbeceiro <bbeceiro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bruno <bruno@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 11:20:12 by bbeceiro          #+#    #+#             */
-/*   Updated: 2026/11/03 11:46:35 by bbeceiro         ###   ########.fr       */
+/*   Updated: 2026/11/10 10:28:43 by bruno            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-// Orthodox Canonical Form For Bureaucrat
+/* OCF */
 Bureaucrat::Bureaucrat() : _name("Default"), _grade(150) {}
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
@@ -34,7 +34,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 
 Bureaucrat::~Bureaucrat() {}
 
-// incrementGrade and decrementGrade member functions
+/* MEMBER FUNCTIONS */
 void Bureaucrat::incrementGrade()
 {
     if (_grade <= 1)
@@ -49,7 +49,7 @@ void Bureaucrat::decrementGrade()
     _grade++;
 }
 
-// Getters
+/* GETTERS */
 std::string Bureaucrat::getName() const
 {
     return _name;
@@ -60,7 +60,7 @@ int Bureaucrat::getGrade() const
     return _grade;
 }
 
-// Exception classes
+/* EXCEPTION CLASSES */
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
     return "Grade is too high!";
@@ -71,7 +71,7 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
     return "Grade is too low!";
 }
 
-// Overload insertion operator for Bureaucrat
+/* OVERLOAD << OPERATOR */
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat)
 {
     out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";

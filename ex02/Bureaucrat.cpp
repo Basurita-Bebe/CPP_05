@@ -1,7 +1,7 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 
-// OCF
+/* OCF */
 Bureaucrat::Bureaucrat() : _name("Default"), _grade(150) {}
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
@@ -23,7 +23,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 
 Bureaucrat::~Bureaucrat() {}
 
-// GETTERS
+/* GETTERS */
 std::string Bureaucrat::getName() const
 {
     return _name;
@@ -34,7 +34,7 @@ int Bureaucrat::getGrade() const
     return _grade;
 }
 
-// MEMBER FUNCTIONS
+/* MEMBER FUNCTIONS */
 void Bureaucrat::incrementGrade()
 {
     if (_grade <= 1)
@@ -84,7 +84,7 @@ void Bureaucrat::executeForm(const AForm &form) const
     }
 }
 
-// EXCEPTION CLASSES
+/* EXCEPTIONS CLASSES */
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
     return "grade is too high";
@@ -95,7 +95,7 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
     return "grade is too low";
 }
 
-// OVERLOAD << OPERATOR
+/* OVERLOAD << OPERATOR */
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat)
 {
     out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";

@@ -19,24 +19,24 @@ class   AForm
         virtual void        executeAction() const = 0; 
         
     public:
-        // OCF
+        /* OCF */
         AForm();
         AForm(std::string name, int signGrade, int execGrade);
         AForm(const AForm &other);
         AForm &operator=(const AForm &other);
         virtual ~AForm();
 
-        // Getters
+        /* GETTERS */
         std::string getName() const;
         bool        getIsSigned() const;
         int         getSignGrade() const;
         int         getExecGrade() const;
 
-        // Member functions
+        /* MEMBER FUNCTIONS */
         void            beSigned(const Bureaucrat &bureaucrat);
         void            execute(const Bureaucrat &executor) const;
 
-        // Exceptions
+        /* EXCEPTIONS CLASSES */
         class   GradeTooHighException : public std::exception
         {
             public:
@@ -54,6 +54,7 @@ class   AForm
         }; 
 };
 
+/* OVERLOAD << OPERATOR */
 std::ostream &operator<<(std::ostream &out, const AForm &form);
 
 #endif
