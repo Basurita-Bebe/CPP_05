@@ -5,17 +5,17 @@
 
 /*
 ** Intern — no name, no grade. Creates forms by name using a lookup table
-** (names[] + creators[]) instead of an if/else chain.
+** (names[] + array of pointers to member functions) instead of an if/else chain.
 */
 class   Intern
 {
     private:
         /* CREATORS */
-        // One per form. Static: no Intern data needed -> plain function pointers.
-        static AForm *createShrubbery(std::string const &target);
-        static AForm *createRobotomy(std::string const &target);
-        static AForm *createPresidential(std::string const &target);
-    
+        // One per form. Called through an array of pointers to member functions.
+        AForm *createShrubbery(std::string const &target) const;
+        AForm *createRobotomy(std::string const &target) const;
+        AForm *createPresidential(std::string const &target) const;
+
     public:
         /* OCF */
         // No attributes: nothing to initialize or copy.

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bruno <bruno@student.42.fr>                +#+  +:+       +#+        */
+/*   By: brrr1 <brrr1@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 11:20:12 by bbeceiro          #+#    #+#             */
-/*   Updated: 2026/11/10 10:28:43 by bruno            ###   ########.fr       */
+/*   Updated: 2026/11/25 09:15:39 by brrr1            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@ Bureaucrat::Bureaucrat() : _name("Default"), _grade(150) {}
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
-    if (grade < 1)
-        throw GradeTooHighException();
-    if (grade > 150)
-        throw GradeTooLowException();
+	if (grade < 1)
+		throw GradeTooHighException();
+	if (grade > 150)
+		throw GradeTooLowException();
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other) : _name(other._name), _grade(other._grade) {}
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 {
-    if (this != &other)
-        _grade = other._grade;
-    return *this;
+	if (this != &other)
+		_grade = other._grade;
+	return *this;
 }
 
 Bureaucrat::~Bureaucrat() {}
@@ -37,22 +37,22 @@ Bureaucrat::~Bureaucrat() {}
 /* MEMBER FUNCTIONS */
 void Bureaucrat::incrementGrade()
 {
-    if (_grade <= 1)
-        throw GradeTooHighException();
-    _grade--;
+	if (_grade <= 1)
+		throw GradeTooHighException();
+	_grade--;
 }
 
 void Bureaucrat::decrementGrade()
 {
-    if (_grade >= 150)
-        throw GradeTooLowException();
-    _grade++;
+	if (_grade >= 150)
+		throw GradeTooLowException();
+	_grade++;
 }
 
 /* GETTERS */
 std::string Bureaucrat::getName() const
 {
-    return _name;
+	return _name;
 }
 
 int Bureaucrat::getGrade() const

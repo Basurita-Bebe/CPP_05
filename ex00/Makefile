@@ -3,16 +3,16 @@ NAME = bureaucrat
 CXX	= c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp \
-	   Bureaucrat.cpp
+SRCS =	main.cpp \
+		Bureaucrat.cpp
 
 all: $(NAME)
 
 OBJDIR = obj
 OBJS = $(addprefix $(OBJDIR)/, $(SRCS:.cpp=.o))
 
-$(NAME): $(OBJS)
-		 $(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+$(NAME):	$(OBJS)
+			$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 $(OBJDIR)/%.o: %.cpp
 		@mkdir -p $(OBJDIR)
